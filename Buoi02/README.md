@@ -13,3 +13,6 @@
   ```
   - Chạy ứng dụng
     `npx expo start`
+  - Xuất bảng cửu chương
+  - Sử dụng component: View, Text và TextInput
+  - Kết hợp useState để lưu trữ trạng thái giá trị nhập
