@@ -7,6 +7,7 @@ type RatingItem = {
     rate: number;
     count: number;
 };
+
 type ItemData = {
   id: number;
   title: string;
@@ -15,12 +16,6 @@ type ItemData = {
   category: string;
   image: string;
   rating: RatingItem;
-};
-type ItemProps = {
-  item: ItemData;
-  onPress: () => void;
-  backgroundColor: string;
-  textColor: string;
 };
 
 const styles = StyleSheet.create({
@@ -47,13 +42,13 @@ export const ProductList = () => {
             .then((data) => setProducts(data));
     }, []);
     return(
-        <View>
+        <View style={styles.container}>
             <Text>Product List</Text>
             {products.length == 0 ? <Text>No product</Text> : (
                 <FlatList
                     data={products}
-                    // keyExtractor={(item) => item.id}
-                    renderItem={({ item }: {item: ItemData}) => <Text style={styles.item}>{item.title} - ${item.price}</Text>}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }: {item: ItemData}) => <View><Text style={styles.item}>{item.title} - ${item.price}</Text></View>}
                 />
             )}
         </View>

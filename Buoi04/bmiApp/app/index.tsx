@@ -3,16 +3,16 @@ import { Text, View, TextInput, TouchableOpacity, StyleSheet } from "react-nativ
 import { ProductList } from "./product";
 
 export default function Index() {
-  const [height, setHeight] = useState(160);
-  const [weight, setWeight] = useState(50);
-  const [bmi, setBmi] = useState(0);
+  const [height, setHeight] = useState("160");
+  const [weight, setWeight] = useState("50");
+  const [bmi, setBmi] = useState("0");
   const [comment, setComment] = useState("");
 
   const calculateBmi = () => {
     const h = parseInt(height) / 100;
     const w = parseInt(weight);
     const bmi = w / (h * h);
-    setBmi(bmi);
+    setBmi(bmi.toFixed(2));
     if(bmi < 18.5) {
       setComment("Underweight");
     } else if(bmi < 23) {
@@ -28,18 +28,19 @@ export default function Index() {
     <View style={styles.container}>
       <View style={styles.group}>
         <Text style={styles.title}>Chiều cao (cm)</Text>
-        <TextInput style={styles.input} value={height} onChangeText={(e) => setHeight(e)} />
+        <TextInput style={styles.input} inputMode="numeric" value={height} onChangeText={(e) => setHeight(e)} />
       </View>
       <View style={styles.group}>
         <Text style={styles.title}>Cân nặng (kg)</Text>
-        <TextInput style={styles.input} value={weight} onChangeText={(v) => setWeight(v)} />
+        <TextInput style={styles.input}  inputMode="numeric" value={weight} onChangeText={(v) => setWeight(v)} />
       </View>
       <View style={styles.group}>
         <Text style={[styles.title, styles.alignCenter]}>BMI: {bmi}</Text>
+        <Text style={[styles.title, styles.alignCenter]}> {comment}</Text>
       </View>
       <View style={styles.group}>
         <TouchableOpacity style={styles.button} onPress={calculateBmi}>
-          CALCULATE
+          <Text>CALCULATE</Text>
         </TouchableOpacity>
       </View>
       <ProductList />
