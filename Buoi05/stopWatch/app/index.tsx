@@ -28,7 +28,8 @@ export default function Index() {
     let mybtnStyle = isRunning ? styles.StopButton : styles.startButton;
     let mybtnText = isRunning ? 'Stop' : 'Start';
     return (
-      <TouchableOpacity style = {[styles.button, mybtnStyle]} onPress={handleStartPress}>
+      <TouchableOpacity style = {[styles.button, mybtnStyle]} 
+        onPress={handleStartPress}>
         <Text>{mybtnText}</Text>
       </TouchableOpacity>
     );
