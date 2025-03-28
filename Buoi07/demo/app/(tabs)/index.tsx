@@ -7,12 +7,15 @@ export default function HomeScreen() {
   useEffect(() => {
     console.log('any change....', count, subject);
   }); //gọi khi bất kỳ state nào thay đổi
+
   useEffect(() => {
     console.log('first render....');
   }, []); //gọi khi component render (lần đầu tiên)
+
   useEffect(() => {
     console.log('change count value')
   }, [count]); //gọi khi count thay đổi
+  
   return (
     <View style={{ flex: 1 }}>
       <Text>DEMO useEffect</Text>
